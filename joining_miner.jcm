@@ -1,0 +1,27 @@
+/* 
+
+    JaCaMo Project File 
+    
+    This file defines the initial state of the MAS (initial agents, environment, organisation, ....)
+    
+    -- 
+    Based on initially implementation developed by Rafael Bordini, Jomi Hubner and Maicon Zatelli,
+    and then adapted for courses by Joao Leite (http://centria.di.fct.unl.pt/~jleite/wesaac14/)
+
+*/
+
+mas joining_miner {
+    agent miner4 : miner.asl  {
+    	join : mining @ n1  
+        focus: mining.m4view 
+    }
+    
+	node n1 running @ localhost
+
+    class-path: lib                      // java class path
+    
+    platform: cartago()
+        
+    asl-path:   src/agt, src/agt/inc     // agent source path  
+}
+

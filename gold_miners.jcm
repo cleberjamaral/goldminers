@@ -11,19 +11,24 @@
 */
 
 mas gold_miners {
-    agent leader
-    agent miner1 : miner.asl  { 
+    agent leader {
+    	join : mining 
+    }
+    agent miner1 : miner.asl  {
+    	join : mining 
         focus: mining.m1view 
     }
     agent miner2 : miner.asl { 
+    	join : mining 
         focus: mining.m2view 
     }
     agent miner3 : miner.asl  { 
+    	join : mining 
         focus: mining.m3view 
     }
-    agent miner4 : miner.asl  { 
-        focus: mining.m4view 
-    }
+    //agent miner4 : miner.asl  { 
+        //focus: mining.m4view 
+    //}
     
     workspace mining {
         // each agent has its own artifact to interface with the Mining Planet scenario
@@ -37,6 +42,8 @@ mas gold_miners {
     
     class-path: lib                      // java class path
     
-    asl-path:   src/agt, src/agt/inc     // agent source path  
+    asl-path:   src/agt, src/agt/inc     // agent source path
+    
+    platform: cartago("infrastructure")      
 }
 
