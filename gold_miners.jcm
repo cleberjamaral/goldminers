@@ -38,7 +38,7 @@ mas gold_miners {
     }
     
     platform: cartago(infrastructure)
-    		  jade()      
+    		  //jade()      
 
     class-path: lib                      // java class path
     

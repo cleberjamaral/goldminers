@@ -17,7 +17,7 @@ mas joining_miner {
     }
     
     platform: cartago()
-    		  jade("-container -host 127.0.0.1")
+    		  //jade("-container -host 127.0.0.1")
         
 	node n1 running @ 127.0.0.1
 
