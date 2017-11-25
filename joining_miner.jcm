@@ -11,17 +11,18 @@
 */
 
 mas joining_miner {
-    agent miner4 : miner.asl  {
+    agent miner4 : dumb_miner.asl  {
     	join : mining @ n1  
-        focus: mining.m4view 
+        focus: mining.m4view @ n1  
     }
     
-	node n1 running @ localhost
+    platform: cartago()
+    		  jade("-container -host 127.0.0.1")
+        
+	node n1 running @ 127.0.0.1
 
     class-path: lib                      // java class path
     
-    platform: cartago()
-        
     asl-path:   src/agt, src/agt/inc     // agent source path  
 }
 

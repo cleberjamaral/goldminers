@@ -33,7 +33,10 @@ public class get_direction extends DefaultInternalAction {
             int itox = (int)((NumberTerm)terms[2]).solve();
             int itoy = (int)((NumberTerm)terms[3]).solve();
             
-            if (model.inGrid(itox,itoy)) {
+            //System.out.println("get_direction "+itox+" "+itoy);
+            
+            if (model.inGrid(itox,itoy)) 
+            {
                 Busca searchAlg = new AEstrela();
                 //searchAlg.setMaxAbertos(1000);
                 Location lini = new Location(iagx, iagy);

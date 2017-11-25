@@ -34,11 +34,9 @@ public class WorldView extends GridWorldView {
 
     public void setEnv(MiningPlanet env) {
         this.env = env;
-        //scenarios.setSelectedIndex(env.getSimId()-1);
     }
     
     JLabel    jlMouseLoc;
-    //JComboBox scenarios;
     JSlider   jSpeed;
     JLabel    jGoldsC;
 
@@ -47,15 +45,6 @@ public class WorldView extends GridWorldView {
         super.initComponents(width);
         JPanel args = new JPanel();
         args.setLayout(new BoxLayout(args, BoxLayout.Y_AXIS));
-        /*scenarios = new JComboBox();
-        for (int i=1; i<=6; i++) {
-            scenarios.addItem(i);
-        }
-        
-		JPanel sp = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        sp.setBorder(BorderFactory.createEtchedBorder());
-        sp.add(new JLabel("Scenario:"));
-        sp.add(scenarios);*/
         
         jSpeed = new JSlider();
         jSpeed.setMinimum(0);
@@ -74,8 +63,7 @@ public class WorldView extends GridWorldView {
         JPanel p = new JPanel(new FlowLayout());
         p.setBorder(BorderFactory.createEtchedBorder());
         p.add(jSpeed);
-        
-        //args.add(sp);
+
         args.add(p);
 
         JPanel msg = new JPanel();
@@ -109,16 +97,6 @@ public class WorldView extends GridWorldView {
                 }
             }
         });
-
-        /*scenarios.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent ievt) {
-                int w = ((Integer)scenarios.getSelectedItem()).intValue();
-                if (env != null && env.getSimId() != w) {
-                    env.endSimulation();
-                    env.initWorld(w);
-                }
-            }            
-        });*/
         
         getCanvas().addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent e) {

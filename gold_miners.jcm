@@ -11,9 +11,6 @@
 */
 
 mas gold_miners {
-    agent leader {
-    	join : mining 
-    }
     agent miner1 : miner.asl  {
     	join : mining 
         focus: mining.m1view 
@@ -40,10 +37,12 @@ mas gold_miners {
         artifact m4view: mining.MiningPlanet(4,3)
     }
     
+    platform: cartago(infrastructure)
+    		  jade()      
+
     class-path: lib                      // java class path
     
     asl-path:   src/agt, src/agt/inc     // agent source path
     
-    platform: cartago("infrastructure")      
 }
 
