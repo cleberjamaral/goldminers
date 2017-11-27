@@ -11,26 +11,21 @@
 */
 
 mas gold_miners {
-    agent miner1 : miner.asl  {
+    agent miner1 : dumb_miner.asl  {
     	join : mining 
         focus: mining.m1view 
     }
-    agent miner2 : miner.asl { 
+    agent miner2 : dumb_miner.asl { 
     	join : mining 
         focus: mining.m2view 
     }
-    agent miner3 : miner.asl  { 
+    agent miner3 : dumb_miner.asl  { 
     	join : mining 
         focus: mining.m3view 
     }
-    //agent miner4 : miner.asl  { 
-        //focus: mining.m4view 
-    //}
     
     workspace mining {
         // each agent has its own artifact to interface with the Mining Planet scenario
-        // first parameter is the id of the scenario
-        // second parameter is the id of the agent in the scenario
         artifact m1view: mining.MiningPlanet(4,0)
         artifact m2view: mining.MiningPlanet(4,1)
         artifact m3view: mining.MiningPlanet(4,2)
