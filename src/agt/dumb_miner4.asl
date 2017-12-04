@@ -1,9 +1,14 @@
 /* Based on implementation developed by Joao Leite */
 { include("$jacamoJar/templates/common-cartago.asl") }
 
-/* beliefs */
-free.
+!start.
 
++!start <- //This change is related with a problem in RMI when artifacts are created by JCM
+	joinRemoteWorkspace(mining,"10.0.0.11",WId);
+    makeArtifact(m4view,"mining.MiningPlanet",[4,3],AId)[wid(WId)];
+    focus(AId)[wid(WId)];
+	.print("I am in ",WId," and focusing on ",AId);
+	-+free.
 /* When free, agents wander around. */
 +free <- //I am free! 
 	.abolish(cell(_,_,_));

@@ -11,25 +11,25 @@
 */
 
 mas gold_miners {
-    agent miner1 : dumb_miner.asl  {
-    	join : mining 
-        focus: mining.m1view 
+    agent miner1 : dumb_miner1.asl  {
+    	//join : mining //This change is related with a problem in RMI when artifacts are created by JCM
+        //focus: mining.m1view //This change is related with a problem in RMI when artifacts are created by JCM
     }
-    agent miner2 : dumb_miner.asl { 
-    	join : mining 
-        focus: mining.m2view 
+    agent miner2 : dumb_miner2.asl { 
+    	//join : mining //This change is related with a problem in RMI when artifacts are created by JCM
+        //focus: mining.m2view //This change is related with a problem in RMI when artifacts are created by JCM
     }
-    agent miner3 : dumb_miner.asl  { 
-    	join : mining 
-        focus: mining.m3view 
+    agent miner3 : dumb_miner3.asl  { 
+    	//join : mining //This change is related with a problem in RMI when artifacts are created by JCM
+        //focus: mining.m3view //This change is related with a problem in RMI when artifacts are created by JCM
     }
     
     workspace mining {
         // each agent has its own artifact to interface with the Mining Planet scenario
-        artifact m1view: mining.MiningPlanet(4,0)
-        artifact m2view: mining.MiningPlanet(4,1)
-        artifact m3view: mining.MiningPlanet(4,2)
-        artifact m4view: mining.MiningPlanet(4,3)
+        //artifact m1view: mining.MiningPlanet(4,0) //This change is related with a problem in RMI when artifacts are created by JCM
+        //artifact m2view: mining.MiningPlanet(4,1)
+        //artifact m3view: mining.MiningPlanet(4,2)
+        //artifact m4view: mining.MiningPlanet(4,3)
     }
     
     platform: cartago(infrastructure)
