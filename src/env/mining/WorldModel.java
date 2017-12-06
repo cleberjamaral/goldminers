@@ -161,7 +161,7 @@ public class WorldModel extends GridWorldModel {
         model.setAgPos(0, 1, 0);
         model.setAgPos(1, 20, 0);
         model.setAgPos(2, 3, 20);
-        model.setAgPos(3, 10, 20);
+        //model.setAgPos(3, 10, 20);
         model.add(WorldModel.GOLD, 20, 13);
         model.add(WorldModel.GOLD, 15, 20);
         model.add(WorldModel.GOLD, 1, 1);

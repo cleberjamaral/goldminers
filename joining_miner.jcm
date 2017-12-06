@@ -11,7 +11,7 @@
 */
 
 mas joining_miner {
-    agent miner4 : dumb_miner4.asl  {
+    agent miner3 : dumb_miner3.asl  {
     	//join : mining @ n1 //This change is related with a problem in RMI when artifacts are created by JCM 
         //focus: mining.m4view @ n1  //This change is related with a problem in RMI when artifacts are created by JCM
     }
