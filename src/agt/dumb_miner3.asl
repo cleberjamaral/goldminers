@@ -9,7 +9,11 @@
     makeArtifact(m3view,"mining.MiningPlanet",[4,2],AId)[wid(WId)];
     focus(AId)[wid(WId)];
 	.print("I am in ",WId," and focusing on ",AId);
-	-+free.
+    makeArtifact(raspi,"mining.Raspi",[],ARId);
+    focus(ARId)[wid(WId)];
+    resources.RaspiWriteIO(low);
+	-+free;
+	!listenIO.
 /* When free, agents wander around. */
 +free <- //I am free! 
 	.abolish(cell(_,_,_));
@@ -25,6 +29,10 @@
     .random(RY);
     !goto(math.floor(RX*W),math.floor(RY*H));
     .print("I am going to (",math.floor(RX*W),",", math.floor(RY*H),")").
++!listenIO <-
+	readIO;
+	.wait(1000);
+	!listenIO.
 
 /* Go to an exact position X,Y */
 +!goto(X,Y) : not pos(X,Y) & carrying_gold & depot(_,DX,DY) <- //I've may be got stuck, so randomize and go again  
@@ -37,11 +45,13 @@
 	-gold(_,_); 
 	pick;
 	.print("Picked, let's go to the depot!");
+	resources.RaspiWriteIO(high);
 	-free;
 	!goto(DX,DY).    
 +!goto(X,Y) : not free & pos(AgX,AgY) & depot(_,AgX,AgY) <- //I've reached depot 
 	drop;
 	.print("Dropped, let's go for gold again!");
+	resources.RaspiWriteIO(low);
 	-+free.
 +!goto(X,Y) : gold(GX,GY) & free <- //Go for gold!
 	.print("I know there is gold in ",GX,",",GY);
