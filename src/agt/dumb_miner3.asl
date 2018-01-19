@@ -4,35 +4,38 @@
 !start.
 
 +!start <- //This change is related with a problem in RMI when artifacts are created by JCM
-	joinRemoteWorkspace(mining,"pyxis",WId);
+//	joinRemoteWorkspace(mining,"pyxis",WId);
+	joinRemoteWorkspace(mining,"10.0.0.5",WId);
 //	joinWorkspace(mining,WId);
     makeArtifact(m3view,"mining.MiningPlanet",[4,2],AId)[wid(WId)];
     focus(AId)[wid(WId)];
 	.print("I am in ",WId," and focusing on ",AId);
-    makeArtifact(raspi,"mining.Raspi",[],ARId);
+    makeArtifact(raspi,"mining.Raspi",[],ARId)[wid(WId)];
     focus(ARId)[wid(WId)];
-    resources.RaspiWriteIO(low);
-	-+free;
-	!listenIO.
+    changeLedPin(low);
+    !!readRaspiIO;
+	-+free.
 /* When free, agents wander around. */
-+free <- //I am free! 
++free : gsize(_,W,H) <- // I am free! 
 	.abolish(cell(_,_,_));
 	.abolish(gold(_,_));
 	.drop_all_desires;
 	.print("I am free!");
-    !change_dir.
+    !!change_dir.
 +free : true <- // gsize is unknown yet
-	.wait(100); 
+	.wait(100);
 	-+free.
 +!change_dir : gsize(_,W,H) <- //Randomize!
 	.random(RX);
     .random(RY);
     !goto(math.floor(RX*W),math.floor(RY*H));
     .print("I am going to (",math.floor(RX*W),",", math.floor(RY*H),")").
-+!listenIO <-
-	readIO;
-	.wait(1000);
-	!listenIO.
++!readRaspiIO <-
+	.print("Reading pin...");
+	readSensorPin.
+
++sensorChanged(State) <-
+	.print("sensorState: ",State).
 
 /* Go to an exact position X,Y */
 +!goto(X,Y) : not pos(X,Y) & carrying_gold & depot(_,DX,DY) <- //I've may be got stuck, so randomize and go again  
@@ -45,13 +48,15 @@
 	-gold(_,_); 
 	pick;
 	.print("Picked, let's go to the depot!");
-	resources.RaspiWriteIO(high);
+	//resources.RaspiWriteIO(high);
+	changeLedPin(high);
 	-free;
 	!goto(DX,DY).    
 +!goto(X,Y) : not free & pos(AgX,AgY) & depot(_,AgX,AgY) <- //I've reached depot 
 	drop;
 	.print("Dropped, let's go for gold again!");
-	resources.RaspiWriteIO(low);
+	//resources.RaspiWriteIO(low);
+	changeLedPin(low);
 	-+free.
 +!goto(X,Y) : gold(GX,GY) & free <- //Go for gold!
 	.print("I know there is gold in ",GX,",",GY);
