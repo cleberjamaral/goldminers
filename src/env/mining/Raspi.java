@@ -19,6 +19,10 @@ public class Raspi extends Artifact {
 	private static GpioPinDigitalInput sensorPin;
 	private static GpioPinDigitalOutput ledPin;
 	
+	/* Performance check */
+	long startTime;
+	long elapsedEstimatedTime;
+	
 	ReadPinChange pinChange;
 
     private static Logger logger = Logger.getLogger(Raspi.class.getName());
@@ -39,6 +43,10 @@ public class Raspi extends Artifact {
         while (true) {
         	logger.info("Awaiting...");
         	await(pinChange);
+        	
+        	elapsedEstimatedTime = System.nanoTime() - startTime;
+        	logger.info("Elapsed estimated time: "+elapsedEstimatedTime/1000+"us");
+
         	signal("sensorChanged", pinChange.state);
 	    }
     }
@@ -50,18 +58,21 @@ public class Raspi extends Artifact {
 	        if (newState.equals("high")) {
 	        	logger.info("Changing pin to HIGH!");
 	        	ledPin.high();
+	        	startTime = System.nanoTime();
 	        }
 	        
 	        /** put gpio LOW */
 	        if (newState.equals("low")) {
 	        	logger.info("Changing pin to LOW!");
 	        	ledPin.low();
+	        	startTime = System.nanoTime();
 	        }
 
 	        /** toggle gpio state */
 	        if (newState.equals("toggle")) {
 	        	logger.info("Switched pin state!");
 	        	ledPin.toggle();
+	        	startTime = System.nanoTime();
 	        }
 
         } catch (Exception e) {
@@ -82,18 +93,15 @@ public class Raspi extends Artifact {
     		try {
     			
     			while ( true )	{
-        	        /** Sensor state has changed */
-        	        if ((sensorPin.isLow()) && (state)) {
+        	        /** Sensor state has changed - Event read!*/
+        	        if ((sensorPin.isLow()) && (state)) { //State changed to false
         	        	state = false;
-        	        	logger.info("State changed to false!");
         	        	break;
-        	        } else if ((sensorPin.isHigh()) && (!state)) {
+        	        } else if ((sensorPin.isHigh()) && (!state)) { //State changed to true!
         	        	state = true;
-        	        	logger.info("State changed to true!");
         	        	break;
         	        }
     			}
-            	logger.info("Event read!");
     		} catch (Exception ex) {
             	logger.info("Exception! "+ex);
     		}

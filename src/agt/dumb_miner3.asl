@@ -5,7 +5,7 @@
 
 +!start <- //This change is related with a problem in RMI when artifacts are created by JCM
 //	joinRemoteWorkspace(mining,"pyxis",WId);
-	joinRemoteWorkspace(mining,"10.0.0.5",WId);
+	joinRemoteWorkspace(mining,"10.0.0.11",WId);
 //	joinWorkspace(mining,WId);
     makeArtifact(m3view,"mining.MiningPlanet",[4,2],AId)[wid(WId)];
     focus(AId)[wid(WId)];
@@ -35,7 +35,10 @@
 	readSensorPin.
 
 +sensorChanged(State) <-
-	.print("sensorState: ",State).
+	-+timeOne(system.time);
+	?timeZero(T0);
+	?timeZero(T1);
+	.print("sensorState: ",State," time: ",T1-T0).
 
 /* Go to an exact position X,Y */
 +!goto(X,Y) : not pos(X,Y) & carrying_gold & depot(_,DX,DY) <- //I've may be got stuck, so randomize and go again  
@@ -48,14 +51,14 @@
 	-gold(_,_); 
 	pick;
 	.print("Picked, let's go to the depot!");
-	//resources.RaspiWriteIO(high);
+	-+timeZero(system.time);
 	changeLedPin(high);
 	-free;
 	!goto(DX,DY).    
 +!goto(X,Y) : not free & pos(AgX,AgY) & depot(_,AgX,AgY) <- //I've reached depot 
 	drop;
 	.print("Dropped, let's go for gold again!");
-	//resources.RaspiWriteIO(low);
+	-+timeZero(system.time);
 	changeLedPin(low);
 	-+free.
 +!goto(X,Y) : gold(GX,GY) & free <- //Go for gold!
