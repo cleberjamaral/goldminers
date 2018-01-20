@@ -5,7 +5,7 @@
 
 +!start <- //This change is related with a problem in RMI when artifacts are created by JCM
 //	joinRemoteWorkspace(mining,"pyxis",WId);
-	joinRemoteWorkspace(mining,"10.0.0.11",WId);
+	joinRemoteWorkspace(mining,"10.0.0.5",WId);
 //	joinWorkspace(mining,WId);
     makeArtifact(m3view,"mining.MiningPlanet",[4,2],AId)[wid(WId)];
     focus(AId)[wid(WId)];

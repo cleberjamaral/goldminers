@@ -7,6 +7,6 @@
 	<classpathentry kind="src" path="src/env"/>
 	<classpathentry kind="lib" path="lib/search.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JaCaMo"/>
-	<classpathentry kind="lib" path="/opt/pi4j/lib/pi4j-core.jar"/>
+	<classpathentry kind="lib" path="lib/pi4j-core.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
