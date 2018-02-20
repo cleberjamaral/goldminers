@@ -167,11 +167,42 @@ public class WorldModel extends GridWorldModel {
         model.add(WorldModel.GOLD, 3, 17);
         model.add(WorldModel.GOLD, 4, 19);
         model.add(WorldModel.GOLD, 5, 21);
-        model.add(WorldModel.GOLD, 7, 23);
-        model.add(WorldModel.GOLD, 8, 25);
-        model.add(WorldModel.GOLD, 9, 27);
-        model.add(WorldModel.GOLD, 10, 31);
-        model.add(WorldModel.GOLD, 11, 33);
+        model.add(WorldModel.GOLD, 6, 23);
+        model.add(WorldModel.GOLD, 7, 25);
+        model.add(WorldModel.GOLD, 8, 27);
+        model.add(WorldModel.GOLD, 9, 31);
+        model.add(WorldModel.GOLD, 10, 33);
+
+        model.add(WorldModel.GOLD, 2, 10);
+        model.add(WorldModel.GOLD, 3, 12);
+        model.add(WorldModel.GOLD, 4, 14);
+        model.add(WorldModel.GOLD, 5, 16);
+        model.add(WorldModel.GOLD, 6, 18);
+        model.add(WorldModel.GOLD, 7, 20);
+        model.add(WorldModel.GOLD, 8, 22);
+        model.add(WorldModel.GOLD, 9, 24);
+        model.add(WorldModel.GOLD, 10, 26);
+        model.add(WorldModel.GOLD, 11, 28);
+        model.add(WorldModel.GOLD, 12, 30);
+        model.add(WorldModel.GOLD, 13, 32);
+        model.add(WorldModel.GOLD, 14, 34);
+
+        model.add(WorldModel.GOLD, 3, 4);
+        model.add(WorldModel.GOLD, 4, 6);
+        model.add(WorldModel.GOLD, 5, 8);
+        model.add(WorldModel.GOLD, 6, 10);
+        model.add(WorldModel.GOLD, 7, 12);
+        model.add(WorldModel.GOLD, 8, 14);
+        model.add(WorldModel.GOLD, 9, 16);
+        model.add(WorldModel.GOLD, 10, 18);
+        model.add(WorldModel.GOLD, 11, 20);
+        model.add(WorldModel.GOLD, 12, 22);
+        model.add(WorldModel.GOLD, 13, 24);
+        model.add(WorldModel.GOLD, 14, 26);
+        model.add(WorldModel.GOLD, 15, 28);
+        model.add(WorldModel.GOLD, 16, 30);
+        model.add(WorldModel.GOLD, 17, 32);
+        model.add(WorldModel.GOLD, 18, 34);
         model.setInitialNbGolds(model.countObjects(WorldModel.GOLD));
         return model;
     }

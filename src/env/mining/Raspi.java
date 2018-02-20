@@ -34,6 +34,7 @@ public class Raspi extends Artifact {
         System.setProperty("pi4j.linking", "dynamic"); //Because this issue: https://github.com/Pi4J/pi4j/issues/349
    		gpio = GpioFactory.getInstance();
    		
+		//Pinmap in http://pi4j.com/pins/model-3b-rev1.html
    		sensorPin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_00, PinPullResistance.PULL_UP);
    		ledPin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01);
     }
