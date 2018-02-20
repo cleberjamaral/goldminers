@@ -4,14 +4,15 @@
 !start.
 
 +!start <- //This change is related with a problem in RMI when artifacts are created by JCM
+	makeArtifact(raspi,"mining.Raspi",[],ARId)[wid(LWId)];
+    focus(ARId)[wid(WId)];
+	.print("I am in local workspace ",WId," and focusing on ",ARId);
 //	joinRemoteWorkspace(mining,"pyxis",WId);
-	joinRemoteWorkspace(mining,"10.0.0.5",WId);
+	joinRemoteWorkspace(mining,"10.0.0.2",WId);
 //	joinWorkspace(mining,WId);
     makeArtifact(m3view,"mining.MiningPlanet",[4,2],AId)[wid(WId)];
     focus(AId)[wid(WId)];
 	.print("I am in ",WId," and focusing on ",AId);
-    makeArtifact(raspi,"mining.Raspi",[],ARId)[wid(WId)];
-    focus(ARId)[wid(WId)];
     changeLedPin(low);
     !!readRaspiIO;
 	-+free.

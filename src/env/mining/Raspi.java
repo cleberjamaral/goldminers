@@ -46,6 +46,7 @@ public class Raspi extends Artifact {
         	
         	elapsedEstimatedTime = System.nanoTime() - startTime;
         	logger.info("Elapsed estimated time: "+elapsedEstimatedTime/1000+"us");
+		System.out.println("Elapsed time: "+elapsedEstimatedTime/1000+"us");
 
         	signal("sensorChanged", pinChange.state);
 	    }
