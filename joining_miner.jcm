@@ -11,14 +11,13 @@
 */
 
 mas joining_miner {
-    agent miner3 : dumb_miner3.asl  {
+    agent miner1 : dumb_miner1.asl  {
     	//join : mining @ n1 //This change is related with a problem in RMI when artifacts are created by JCM 
         //focus: mining.m4view @ n1  //This change is related with a problem in RMI when artifacts are created by JCM
     }
     
     platform: cartago()
-    		  //jade("-container -host 127.0.0.1")
-        
+    	//jade("-container -host 127.0.0.1")
 	//node n1 running @ 10.0.0.11 //This change is related with a problem in RMI when artifacts are created by JCM
 
     class-path: lib                      // java class path

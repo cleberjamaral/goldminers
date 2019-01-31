@@ -10,11 +10,11 @@
 //	joinRemoteWorkspace(mining,"pyxis",WId);
 	joinRemoteWorkspace(mining,"10.0.0.2",WId);
 //	joinWorkspace(mining,WId);
-    makeArtifact(m3view,"mining.MiningPlanet",[4,2],AId)[wid(WId)];
-    focus(AId)[wid(WId)];
+	makeArtifact(m3view,"mining.MiningPlanet",[4,2],AId)[wid(WId)];
+	focus(AId)[wid(WId)];
 	.print("I am in ",WId," and focusing on ",AId);
-    changeLedPin(low);
-    !!readRaspiIO;
+	changeLedPin(low);
+	!!readRaspiIO;
 	-+free.
 /* When free, agents wander around. */
 +free : gsize(_,W,H) <- // I am free! 
@@ -22,15 +22,15 @@
 	.abolish(gold(_,_));
 	.drop_all_desires;
 	.print("I am free!");
-    !!change_dir.
+	!!change_dir.
 +free : true <- // gsize is unknown yet
 	.wait(100);
 	-+free.
 +!change_dir : gsize(_,W,H) <- //Randomize!
 	.random(RX);
-    .random(RY);
-    !goto(math.floor(RX*W),math.floor(RY*H));
-    .print("I am going to (",math.floor(RX*W),",", math.floor(RY*H),")").
+	.random(RY);
+	!goto(math.floor(RX*W),math.floor(RY*H));
+	.print("I am going to (",math.floor(RX*W),",", math.floor(RY*H),")").
 +!readRaspiIO <-
 	.print("Reading pin...");
 	readSensorPin.
@@ -98,4 +98,4 @@
 	+gold(X,Y).
 +gold(X,Y) : free <- //I've found gold!!!
 	.drop_desire(goto(_,_));
-    !goto(X,Y).
+	!goto(X,Y).

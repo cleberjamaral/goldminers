@@ -4,10 +4,10 @@
 !start.
 
 +!start <- //This change is related with a problem in RMI when artifacts are created by JCM
-	joinRemoteWorkspace(mining,"pyxis",WId);
+	joinRemoteWorkspace(mining,"debian",WId);
 //	joinWorkspace(mining,WId);
-    makeArtifact(m1view,"mining.MiningPlanet",[4,0],AId)[wid(WId)];
-    focus(AId)[wid(WId)];
+	makeArtifact(m1view,"mining.MiningPlanet",[4,0],AId)[wid(WId)];
+	focus(AId)[wid(WId)];
 	.print("I am in ",WId," and focusing on ",AId);
 	-+free.
 /* When free, agents wander around. */
@@ -22,9 +22,9 @@
 	-+free.
 +!change_dir : gsize(_,W,H) <- //Randomize!
 	.random(RX);
-    .random(RY);
-    !goto(math.floor(RX*W),math.floor(RY*H));
-    .print("I am going to (",math.floor(RX*W),",", math.floor(RY*H),")").
+	.random(RY);
+	!goto(math.floor(RX*W),math.floor(RY*H));
+	.print("I am going to (",math.floor(RX*W),",", math.floor(RY*H),")").
 
 /* Go to an exact position X,Y */
 +!goto(X,Y) : not pos(X,Y) & carrying_gold & depot(_,DX,DY) <- //I've may be got stuck, so randomize and go again  
@@ -79,4 +79,4 @@
 	+gold(X,Y).
 +gold(X,Y) : free <- //I've found gold!!!
 	.drop_desire(goto(_,_));
-    !goto(X,Y).
+	!goto(X,Y).
