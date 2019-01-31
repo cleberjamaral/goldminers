@@ -15,7 +15,7 @@ To compile and run the server using [gradle](https://github.com/jacamo-lang/jaca
     $ gradle server
 
 
-For clients, first edit joining miner.jcm to lauch some miner and edit dumb_miner corresponding file, uptading "server_name" on command "joinRemoteWorkspace(mining,"server_name",WId)".
+For clients, first edit joiningminer.jcm to lauch some miner and edit dumb_miner corresponding file, uptading "server_name" on command "joinRemoteWorkspace(mining,"server_name",WId)".
 Then, to compile and run each client with them local joiningminer.jcm files:
 
     $ gradle client
